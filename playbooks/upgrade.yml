@@ -1,0 +1,15 @@
+- hosts: all
+  become: true
+  tasks:
+    #Apt Module for Ubuntu Debian Mint
+  - name: "update cache with Apt"
+    apt: 
+      upgrade: yes
+    when: ansible_distribution in ["Ubuntu", "Debian", "Mint"]
+    #Yum or DNF Module
+  - name: "update cache with Yum or DNF"
+    yum:
+      name: '*'
+      state: latest
+      exclude: kernel*,foo*
+    when: ansible_distribution in ["CentOS", "Fedora", "OpenSUSE", "SUSE", "RedHat Enterprise Linux"]
