@@ -1,0 +1,10 @@
+- hosts: all
+  become: true
+  tasks:
+
+  - name: import files to machines
+    ansible.builtin.copy: #.file for removing
+      #state: absent    # states: absent for deleting file
+      src: ~/ansible/html/index.html    #the file in local machine
+      dest: /var/www/html/   #the dest where/which to be
+

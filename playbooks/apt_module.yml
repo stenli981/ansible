@@ -1,0 +1,11 @@
+- hosts: all
+  become: true
+  tasks:
+
+  - name: packages
+    apt:  
+      state: absent
+      name: apache2
+
+      
+      
